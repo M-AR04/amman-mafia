@@ -15,7 +15,63 @@ export const GameStateProvider = ({ children }) => {
     return localStorage.getItem('am_language') || 'ar';
   });
 
-  const [currentPage, setCurrentPage] = useState('home');
+  // Map pathname to internal page names
+  const getPageFromPath = (path) => {
+    switch (path.toLowerCase()) {
+      case '/':
+      case '':
+        return 'home';
+      case '/operations':
+      case '/services':
+        return 'services';
+      case '/booking':
+      case '/book':
+        return 'booking';
+      case '/dashboard':
+      case '/control':
+      case '/admin':
+        return 'admin';
+      default:
+        return 'home';
+    }
+  };
+
+  // Map internal page names to canonical URLs
+  const getPathFromPage = (page) => {
+    switch (page) {
+      case 'home':
+        return '/';
+      case 'services':
+        return '/operations';
+      case 'booking':
+        return '/booking';
+      case 'admin':
+        return '/dashboard';
+      default:
+        return '/';
+    }
+  };
+
+  const [currentPage, setCurrentPageState] = useState(() => {
+    return getPageFromPath(window.location.pathname);
+  });
+
+  const setCurrentPage = (page) => {
+    const targetPath = getPathFromPage(page);
+    if (window.location.pathname !== targetPath) {
+      window.history.pushState(null, '', targetPath);
+    }
+    setCurrentPageState(page);
+  };
+
+  // Keep state in sync with browser forward/back button popstates
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentPageState(getPageFromPath(window.location.pathname));
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
   const [announcement, setAnnouncement] = useState(() => {
     return localStorage.getItem('am_announcement') || '🎭 Welcome to the Amman Mafia Syndicate. Secure your seat at the round table for the ultimate strategic battle! 🎭';

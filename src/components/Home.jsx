@@ -158,7 +158,7 @@ export const Home = () => {
             }}>
               ليالي مافيا عمان
             </span>
-            <h1 className="title-vintage" style={{ fontSize: '3.5rem', lineHeight: '1.1', fontWeight: 900, marginBottom: '20px' }}>
+            <h1 className="hero-title">
               Amman Mafia <br />
               <span className="crimson-accent">Nights</span>
             </h1>
@@ -166,18 +166,13 @@ export const Home = () => {
             {/* Typing Slogan Effect */}
             <div style={{ minHeight: '40px', marginBottom: '25px' }}>
               <p style={{
-                fontFamily: 'var(--font-title)',
-                fontSize: '1.5rem',
-                color: 'var(--text-primary)',
                 borderRight: language === 'en' ? '2px solid var(--primary-gold)' : 'none',
                 borderLeft: language === 'ar' ? '2px solid var(--primary-gold)' : 'none',
                 whiteSpace: 'nowrap',
                 overflow: 'hidden',
-                display: 'inline-block',
                 paddingRight: language === 'en' ? '8px' : '0',
                 paddingLeft: language === 'ar' ? '8px' : '0',
-                animation: 'none'
-              }} className="typewriter-caret">
+              }} className="hero-slogan typewriter-caret">
                 {activeSlogan}
               </p>
             </div>
@@ -212,16 +207,7 @@ export const Home = () => {
             <img 
               src="/logo.png" 
               alt="Amman Mafia Shield Logo" 
-              style={{
-                width: '100%',
-                maxHeight: '420px',
-                objectFit: 'contain',
-                position: 'relative',
-                zIndex: 2,
-                filter: 'drop-shadow(0 15px 30px rgba(0,0,0,0.9))',
-                transform: 'scale(1.03)',
-                transition: 'transform 0.5s ease'
-              }}
+              className="hero-logo-img"
               onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.08) rotate(1deg)'}
               onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1.03) rotate(0deg)'}
             />
@@ -283,7 +269,7 @@ export const Home = () => {
             <span className="crimson-accent" style={{ fontFamily: 'var(--font-title)', letterSpacing: '0.15em', fontSize: '0.9rem', display: 'block', marginBottom: '8px' }}>
               ESTABLISHED IN AMMAN
             </span>
-            <h2 className="title-vintage" style={{ fontSize: '2.2rem', marginBottom: '24px' }}>
+            <h2 className="section-title" style={{ marginBottom: '24px' }}>
               {currentT.introTitle}
             </h2>
             <p style={{ color: 'var(--text-primary)', fontSize: '1.1rem', marginBottom: '18px', fontWeight: 300, lineHeight: 1.7 }}>
@@ -301,7 +287,7 @@ export const Home = () => {
       <section style={{ padding: '80px 0', borderBottom: '1px solid var(--border-gold)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '50px' }}>
-            <h2 className="title-vintage" style={{ fontSize: '2.2rem' }}>
+            <h2 className="section-title">
               {currentT.upcomingTitle}
             </h2>
             <p style={{ color: 'var(--text-muted)', marginTop: '8px' }}>
@@ -309,7 +295,7 @@ export const Home = () => {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '24px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px' }}>
             {upcomingEvents.map((ev, index) => (
               <div 
                 key={index} 
@@ -397,7 +383,7 @@ export const Home = () => {
       <section style={{ padding: '80px 0', borderBottom: '1px solid #141316', backgroundColor: '#070709' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '50px' }}>
-            <h2 className="title-vintage" style={{ fontSize: '2.2rem' }}>
+            <h2 className="section-title">
               {currentT.testimonialTitle}
             </h2>
             <p style={{ color: 'var(--text-muted)', marginTop: '8px' }}>
@@ -405,7 +391,7 @@ export const Home = () => {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
             {testimonials.map((tst, index) => (
               <div 
                 key={index} 
@@ -479,7 +465,7 @@ export const Home = () => {
         }}></div>
 
         <div className="container" style={{ position: 'relative', zIndex: 5 }}>
-          <h2 className="title-vintage" style={{ fontSize: '2.5rem', marginBottom: '15px' }}>
+          <h2 className="section-title" style={{ marginBottom: '15px' }}>
             {currentT.joinSyndicate}
           </h2>
           <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto 40px auto', lineHeight: 1.6 }}>

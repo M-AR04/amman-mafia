@@ -140,7 +140,7 @@ export const Services = () => {
   return (
     <div className="container">
       <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-        <h1 className="title-vintage" style={{ fontSize: '2.5rem' }}>
+        <h1 className="section-title">
           {currentT.title}
         </h1>
         <p style={{ color: 'var(--text-muted)', marginTop: '8px', maxWidth: '600px', margin: '8px auto 0 auto' }}>
@@ -197,7 +197,7 @@ export const Services = () => {
                 <span className="crimson-accent" style={{ fontFamily: 'var(--font-title)', letterSpacing: '0.1em', fontSize: '0.8rem', display: 'block', marginBottom: '5px' }}>
                   {service.subtitle}
                 </span>
-                <h2 className="title-vintage" style={{ fontSize: '1.8rem', marginBottom: '15px' }}>
+                <h2 className="title-vintage" style={{ fontSize: '1.4rem', marginBottom: '15px' }}>
                   {service.title}
                 </h2>
                 <p style={{ color: 'var(--text-primary)', fontSize: '1.05rem', fontWeight: 300, marginBottom: '12px', lineHeight: 1.6 }}>

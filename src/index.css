@@ -817,3 +817,167 @@ input:checked + .switch-slider::before {
     gap: 30px;
   }
 }
+
+/* Responsive header nav links formatting for tiny mobile */
+@media (max-width: 600px) {
+  .header-container nav {
+    gap: 10px !important;
+    justify-content: center;
+    width: 100%;
+  }
+  .nav-link {
+    font-size: 0.75rem !important;
+    letter-spacing: 0.04em !important;
+  }
+  .header-container button {
+    padding: 5px 10px !important;
+    font-size: 0.7rem !important;
+  }
+}
+
+/* Responsive Admin Ledger */
+.ledger-table {
+  display: block;
+  width: 100%;
+}
+.ledger-cards {
+  display: none;
+  flex-direction: column;
+  gap: 16px;
+}
+@media (max-width: 768px) {
+  .ledger-table {
+    display: none;
+  }
+  .ledger-cards {
+    display: flex;
+  }
+}
+
+/* Premium Responsive Typography Engine */
+.hero-title {
+  font-family: var(--font-title);
+  font-size: 3.5rem;
+  line-height: 1.1;
+  font-weight: 900;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.9);
+}
+
+.hero-slogan {
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  display: inline-block;
+}
+
+.section-title {
+  font-family: var(--font-title);
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.9);
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  .section-title {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  .hero-slogan {
+    font-size: 1.1rem;
+  }
+  .section-title {
+    font-size: 1.5rem;
+  }
+  .section-subtitle {
+    font-size: 0.85rem;
+  }
+}
+
+/* Responsive Shield Logo Sizing */
+.hero-logo-img {
+  width: 100%;
+  max-width: 380px;
+  max-height: 420px;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 15px 30px rgba(0,0,0,0.9));
+  transform: scale(1.03);
+  transition: transform 0.5s ease;
+}
+
+@media (max-width: 480px) {
+  .hero-logo-img {
+    max-width: 200px;
+    max-height: 220px;
+  }
+}
+
+/* Mobile Stacking Column Reset for Staggered Grids */
+@media (max-width: 768px) {
+  .services-grid > div {
+    order: 0 !important;
+  }
+}
+
+/* Custom Sleek Horizontal Swipe Carousel */
+.smooth-scroll-x {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.smooth-scroll-x::-webkit-scrollbar {
+  height: 4px;
+}
+
+.smooth-scroll-x::-webkit-scrollbar-track {
+  background: var(--bg-pure);
+}
+
+.smooth-scroll-x::-webkit-scrollbar-thumb {
+  background: var(--border-gold);
+  border-radius: 2px;
+}
+
+.smooth-scroll-x::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-gold);
+}
+
+/* Stacking Form Fields helper */
+.form-row-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+@media (max-width: 480px) {
+  .form-row-2col {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+

@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useRef } from 'react';
 import { GameStateContext, getLocalDateString } from '../context/GameState';
 
 export const BookingSystem = () => {
@@ -10,6 +10,9 @@ export const BookingSystem = () => {
     maxSeats,
     addBooking
   } = useContext(GameStateContext);
+
+  const formRef = useRef(null);
+  const mapRef = useRef(null);
 
   const [selectedDate, setSelectedDate] = useState(() => getLocalDateString(new Date()));
   const [selectedSlot, setSelectedSlot] = useState('');
@@ -59,11 +62,17 @@ export const BookingSystem = () => {
     if (occupiedSeats.includes(seatNum)) return; // Occupied
 
     setSelectedSeats(prev => {
-      if (prev.includes(seatNum)) {
-        return prev.filter(s => s !== seatNum);
-      } else {
-        return [...prev, seatNum];
+      const nextSeats = prev.includes(seatNum)
+        ? prev.filter(s => s !== seatNum)
+        : [...prev, seatNum];
+      
+      // If a seat is newly selected, smoothly scroll down to the credentials form
+      if (nextSeats.length > 0) {
+        setTimeout(() => {
+          formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 150);
       }
+      return nextSeats;
     });
   };
 
@@ -93,6 +102,11 @@ export const BookingSystem = () => {
   const handleReset = () => {
     setBookingConfirmed(false);
     setLastBooking(null);
+    setSelectedSeats([]);
+    // Smoothly scroll back to the seating map to select another seat
+    setTimeout(() => {
+      mapRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 150);
   };
 
   // Helper to format names into initials
@@ -195,7 +209,7 @@ export const BookingSystem = () => {
   if (bookingConfirmed && lastBooking) {
     return (
       <div className="container shake-trigger" style={{ textAlign: 'center', padding: '20px 0' }}>
-        <h1 className="title-vintage gold-accent" style={{ fontSize: '2.2rem', marginBottom: '10px' }}>
+        <h1 className="section-title gold-accent" style={{ marginBottom: '10px' }}>
           {currentT.ticketTitle}
         </h1>
         <p style={{ color: 'var(--text-muted)', marginBottom: '30px' }}>
@@ -312,7 +326,7 @@ export const BookingSystem = () => {
   return (
     <div className="container">
       <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-        <h1 className="title-vintage" style={{ fontSize: '2.5rem' }}>
+        <h1 className="section-title">
           {currentT.seatMapTitle}
         </h1>
         <p style={{ color: 'var(--text-muted)', marginTop: '8px' }}>
@@ -330,7 +344,7 @@ export const BookingSystem = () => {
             <h3 className="title-vintage gold-accent" style={{ fontSize: '1rem', marginBottom: '15px' }}>
               {currentT.selectDate}
             </h3>
-            <div style={{ display: 'flex', gap: '10px', overflowX: 'auto', paddingBottom: '10px' }}>
+            <div className="smooth-scroll-x">
               {dateOptions.map(day => (
                 <button
                   key={day.dateStr}
@@ -408,7 +422,7 @@ export const BookingSystem = () => {
           
           {/* STEP 3: Seat Map and Felt Table */}
           {selectedSlot && (
-            <div className="card-noir" style={{ padding: '24px 20px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <div ref={mapRef} className="card-noir" style={{ padding: '24px 20px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <h3 className="title-vintage gold-accent" style={{ fontSize: '1rem', alignSelf: 'flex-start', marginBottom: '10px' }}>
                 {currentT.selectSeats}
               </h3>
@@ -494,7 +508,7 @@ export const BookingSystem = () => {
 
           {/* OATH BOOKING FORM */}
           {selectedSeats.length > 0 && (
-            <div className="card-noir" style={{ padding: '24px 20px' }}>
+            <div ref={formRef} className="card-noir" style={{ padding: '24px 20px' }}>
               <h3 className="title-vintage crimson-accent" style={{ fontSize: '1.1rem', marginBottom: '5px' }}>
                 {currentT.bookingFormTitle}
               </h3>

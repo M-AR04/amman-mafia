@@ -231,7 +231,7 @@ export const AdminDashboard = () => {
         <span className="crimson-accent" style={{ fontFamily: 'var(--font-title)', letterSpacing: '0.15em', fontSize: '0.9rem', display: 'block', marginBottom: '8px' }}>
           SYNDICATE SECRET HQ
         </span>
-        <h1 className="title-vintage" style={{ fontSize: '2.5rem' }}>
+        <h1 className="section-title">
           {currentT.title}
         </h1>
         <p style={{ color: 'var(--text-muted)', marginTop: '8px' }}>
@@ -242,7 +242,7 @@ export const AdminDashboard = () => {
       <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '40px' }}>
         
         {/* ROW 1: Controls & Configs (Side by Side) */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px', alignItems: 'start' }}>
+        <div className="services-grid" style={{ alignItems: 'start' }}>
           
           {/* Card 1: Global Site Settings */}
           <div className="card-noir" style={{ padding: '24px' }}>
@@ -304,7 +304,7 @@ export const AdminDashboard = () => {
             </h3>
 
             <form onSubmit={handleSaveOperational}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
+              <div className="form-row-2col">
                 <div className="form-group">
                   <label className="form-label">{currentT.startHour}</label>
                   <input
@@ -329,7 +329,7 @@ export const AdminDashboard = () => {
                 </div>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
+              <div className="form-row-2col">
                 <div className="form-group">
                   <label className="form-label">{currentT.sessionLen}</label>
                   <input
@@ -378,7 +378,7 @@ export const AdminDashboard = () => {
             {/* Visual Radial Map Selector */}
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               {/* Date & Slot selection inside Admin */}
-              <div style={{ display: 'flex', gap: '15px', width: '100%', maxWidth: '380px', marginBottom: '20px' }}>
+              <div className="form-row-2col" style={{ width: '100%', maxWidth: '380px', marginBottom: '20px', gap: '15px' }}>
                 <div style={{ flex: 1 }}>
                   <label className="form-label" style={{ fontSize: '0.7rem' }}>Date</label>
                   <select 
@@ -556,126 +556,209 @@ export const AdminDashboard = () => {
           </div>
 
           {/* Bookings Table List */}
-          <div style={{ overflowX: 'auto' }}>
-            {filteredBookings.length === 0 ? (
-              <p style={{ textAlign: 'center', color: 'var(--text-muted)', padding: '30px 0' }}>
-                {currentT.noBookings}
-              </p>
-            ) : (
-              <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: isRtl ? 'right' : 'left' }}>
-                <thead>
-                  <tr style={{ borderBottom: '1px solid var(--text-dark)' }}>
-                    <th style={{ padding: '12px 10px', fontSize: '0.8rem', fontFamily: 'var(--font-title)', color: 'var(--primary-gold)' }}>
-                      {currentT.colName}
-                    </th>
-                    <th style={{ padding: '12px 10px', fontSize: '0.8rem', fontFamily: 'var(--font-title)', color: 'var(--primary-gold)' }}>
-                      {currentT.colPhone}
-                    </th>
-                    <th style={{ padding: '12px 10px', fontSize: '0.8rem', fontFamily: 'var(--font-title)', color: 'var(--primary-gold)' }}>
-                      {currentT.colDate}
-                    </th>
-                    <th style={{ padding: '12px 10px', fontSize: '0.8rem', fontFamily: 'var(--font-title)', color: 'var(--primary-gold)' }}>
-                      {currentT.colSlot}
-                    </th>
-                    <th style={{ padding: '12px 10px', fontSize: '0.8rem', fontFamily: 'var(--font-title)', color: 'var(--primary-gold)' }}>
-                      {currentT.colSeats}
-                    </th>
-                    <th style={{ padding: '12px 10px', fontSize: '0.8rem', fontFamily: 'var(--font-title)', color: 'var(--primary-gold)' }}>
-                      {currentT.colStatus}
-                    </th>
-                    <th style={{ padding: '12px 10px', fontSize: '0.8rem', fontFamily: 'var(--font-title)', color: 'var(--primary-gold)', textAlign: 'center' }}>
-                      {currentT.colActions}
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredBookings.map(b => (
-                    <tr 
-                      key={b.id} 
-                      style={{ 
-                        borderBottom: '1px solid #141416',
-                        opacity: b.status === 'Cancelled' ? 0.5 : 1,
-                        transition: 'var(--transition-smooth)'
-                      }}
-                      onMouseOver={(e)=>e.currentTarget.style.backgroundColor='#111115'}
-                      onMouseOut={(e)=>e.currentTarget.style.backgroundColor='transparent'}
-                    >
-                      <td style={{ padding: '14px 10px', fontSize: '0.9rem', fontWeight: 600 }}>
-                        {b.name}
-                      </td>
-                      <td style={{ padding: '14px 10px', fontSize: '0.85rem', color: 'var(--text-muted)', fontFamily: 'monospace' }}>
-                        {b.phone}
-                      </td>
-                      <td style={{ padding: '14px 10px', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                        {b.date}
-                      </td>
-                      <td style={{ padding: '14px 10px', fontSize: '0.85rem', fontWeight: 500 }}>
-                        {b.timeSlot}
-                      </td>
-                      <td style={{ padding: '14px 10px' }}>
-                        <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
-                          {b.seats.map(s => (
-                            <span 
-                              key={s} 
-                              style={{ 
-                                padding: '2px 6px', 
-                                backgroundColor: b.status === 'Cancelled' ? '#1c1a1e' : 'var(--crimson)', 
-                                color: b.status === 'Cancelled' ? 'var(--text-dark)' : '#fff',
-                                borderRadius: '3px',
-                                fontSize: '0.75rem',
-                                fontWeight: 'bold'
-                              }}
+          {filteredBookings.length === 0 ? (
+            <p style={{ textAlign: 'center', color: 'var(--text-muted)', padding: '30px 0' }}>
+              {currentT.noBookings}
+            </p>
+          ) : (
+            <>
+              {/* DESKTOP TABLE VIEW */}
+              <div style={{ overflowX: 'auto' }} className="ledger-table">
+                <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: isRtl ? 'right' : 'left' }}>
+                  <thead>
+                    <tr style={{ borderBottom: '1px solid var(--text-dark)' }}>
+                      <th style={{ padding: '12px 10px', fontSize: '0.8rem', fontFamily: 'var(--font-title)', color: 'var(--primary-gold)' }}>
+                        {currentT.colName}
+                      </th>
+                      <th style={{ padding: '12px 10px', fontSize: '0.8rem', fontFamily: 'var(--font-title)', color: 'var(--primary-gold)' }}>
+                        {currentT.colPhone}
+                      </th>
+                      <th style={{ padding: '12px 10px', fontSize: '0.8rem', fontFamily: 'var(--font-title)', color: 'var(--primary-gold)' }}>
+                        {currentT.colDate}
+                      </th>
+                      <th style={{ padding: '12px 10px', fontSize: '0.8rem', fontFamily: 'var(--font-title)', color: 'var(--primary-gold)' }}>
+                        {currentT.colSlot}
+                      </th>
+                      <th style={{ padding: '12px 10px', fontSize: '0.8rem', fontFamily: 'var(--font-title)', color: 'var(--primary-gold)' }}>
+                        {currentT.colSeats}
+                      </th>
+                      <th style={{ padding: '12px 10px', fontSize: '0.8rem', fontFamily: 'var(--font-title)', color: 'var(--primary-gold)' }}>
+                        {currentT.colStatus}
+                      </th>
+                      <th style={{ padding: '12px 10px', fontSize: '0.8rem', fontFamily: 'var(--font-title)', color: 'var(--primary-gold)', textAlign: 'center' }}>
+                        {currentT.colActions}
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {filteredBookings.map(b => (
+                      <tr 
+                        key={b.id} 
+                        style={{ 
+                          borderBottom: '1px solid #141416',
+                          opacity: b.status === 'Cancelled' ? 0.5 : 1,
+                          transition: 'var(--transition-smooth)'
+                        }}
+                        onMouseOver={(e)=>e.currentTarget.style.backgroundColor='#111115'}
+                        onMouseOut={(e)=>e.currentTarget.style.backgroundColor='transparent'}
+                      >
+                        <td style={{ padding: '14px 10px', fontSize: '0.9rem', fontWeight: 600 }}>
+                          {b.name}
+                        </td>
+                        <td style={{ padding: '14px 10px', fontSize: '0.85rem', color: 'var(--text-muted)', fontFamily: 'monospace' }}>
+                          {b.phone}
+                        </td>
+                        <td style={{ padding: '14px 10px', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+                          {b.date}
+                        </td>
+                        <td style={{ padding: '14px 10px', fontSize: '0.85rem', fontWeight: 500 }}>
+                          {b.timeSlot}
+                        </td>
+                        <td style={{ padding: '14px 10px' }}>
+                          <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
+                            {b.seats.map(s => (
+                              <span 
+                                key={s} 
+                                style={{ 
+                                  padding: '2px 6px', 
+                                  backgroundColor: b.status === 'Cancelled' ? '#1c1a1e' : 'var(--crimson)', 
+                                  color: b.status === 'Cancelled' ? 'var(--text-dark)' : '#fff',
+                                  borderRadius: '3px',
+                                  fontSize: '0.75rem',
+                                  fontWeight: 'bold'
+                                }}
+                              >
+                                S{s}
+                              </span>
+                            ))}
+                          </div>
+                        </td>
+                        <td style={{ padding: '14px 10px' }}>
+                          <span style={{ 
+                            fontSize: '0.75rem', 
+                            fontWeight: 700,
+                            color: b.status === 'Confirmed' ? 'var(--primary-gold)' : (b.status === 'Pending' ? '#e2a106' : 'var(--text-dark)')
+                          }}>
+                            {b.status.toUpperCase()}
+                          </span>
+                        </td>
+                        <td style={{ padding: '14px 10px', display: 'flex', gap: '8px', justifyContent: 'center' }}>
+                          {b.status === 'Pending' && (
+                            <button
+                              onClick={() => updateBooking(b.id, { status: 'Confirmed' })}
+                              className="btn-noir btn-noir-gold"
+                              style={{ padding: '4px 10px', fontSize: '0.7rem' }}
                             >
+                              {currentT.confirmDirective}
+                            </button>
+                          )}
+                          {b.status !== 'Cancelled' && (
+                            <button
+                              onClick={() => cancelBooking(b.id)}
+                              className="btn-noir btn-noir-muted"
+                              style={{ padding: '4px 10px', fontSize: '0.7rem', border: '1px solid rgba(153, 0, 0, 0.4)', color: 'var(--crimson)' }}
+                            >
+                              {currentT.cancelDirective}
+                            </button>
+                          )}
+                          <button
+                            onClick={() => deleteBooking(b.id)}
+                            className="btn-noir btn-noir-muted"
+                            style={{ padding: '4px 10px', fontSize: '0.7rem' }}
+                          >
+                            {currentT.deleteDirective}
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              {/* MOBILE CARDS VIEW */}
+              <div className="ledger-cards">
+                {filteredBookings.map(b => (
+                  <div 
+                    key={b.id} 
+                    className="card-dossier" 
+                    style={{ 
+                      borderLeft: b.status === 'Confirmed' ? '4px solid var(--primary-gold)' : (b.status === 'Pending' ? '4px solid #e2a106' : '4px solid var(--text-dark)'),
+                      opacity: b.status === 'Cancelled' ? 0.6 : 1,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '12px'
+                    }}
+                  >
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <strong style={{ fontSize: '1rem' }}>{b.name}</strong>
+                      <span style={{ 
+                        fontSize: '0.75rem', 
+                        fontWeight: 700,
+                        color: b.status === 'Confirmed' ? 'var(--primary-gold)' : (b.status === 'Pending' ? '#e2a106' : 'var(--text-dark)')
+                      }}>
+                        {b.status.toUpperCase()}
+                      </span>
+                    </div>
+
+                    <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
+                      <div>
+                        <span style={{ display: 'block', fontSize: '0.7rem', color: 'var(--text-dark)' }}>{currentT.colPhone}</span>
+                        <span style={{ fontFamily: 'monospace' }}>{b.phone}</span>
+                      </div>
+                      <div>
+                        <span style={{ display: 'block', fontSize: '0.7rem', color: 'var(--text-dark)' }}>{currentT.colDate}</span>
+                        <span>{b.date}</span>
+                      </div>
+                      <div>
+                        <span style={{ display: 'block', fontSize: '0.7rem', color: 'var(--text-dark)' }}>{currentT.colSlot}</span>
+                        <span>{b.timeSlot}</span>
+                      </div>
+                      <div>
+                        <span style={{ display: 'block', fontSize: '0.7rem', color: 'var(--text-dark)' }}>{currentT.colSeats}</span>
+                        <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap', marginTop: '2px' }}>
+                          {b.seats.map(s => (
+                            <span key={s} style={{ padding: '2px 6px', backgroundColor: b.status === 'Cancelled' ? '#1c1a1e' : 'var(--crimson)', color: '#fff', borderRadius: '3px', fontSize: '0.7rem', fontWeight: 'bold' }}>
                               S{s}
                             </span>
                           ))}
                         </div>
-                      </td>
-                      <td style={{ padding: '14px 10px' }}>
-                        <span style={{ 
-                          fontSize: '0.75rem', 
-                          fontWeight: 700,
-                          color: b.status === 'Confirmed' ? 'var(--primary-gold)' : (b.status === 'Pending' ? '#e2a106' : 'var(--text-dark)')
-                        }}>
-                          {b.status.toUpperCase()}
-                        </span>
-                      </td>
-                      <td style={{ padding: '14px 10px', display: 'flex', gap: '8px', justifyContent: 'center' }}>
-                        {b.status === 'Pending' && (
-                          <button
-                            onClick={() => updateBooking(b.id, { status: 'Confirmed' })}
-                            className="btn-noir btn-noir-gold"
-                            style={{ padding: '4px 10px', fontSize: '0.7rem' }}
-                          >
-                            {currentT.confirmDirective}
-                          </button>
-                        )}
-                        {b.status !== 'Cancelled' && (
-                          <button
-                            onClick={() => cancelBooking(b.id)}
-                            className="btn-noir btn-noir-muted"
-                            style={{ padding: '4px 10px', fontSize: '0.7rem', border: '1px solid rgba(153, 0, 0, 0.4)', color: 'var(--crimson)' }}
-                          >
-                            {currentT.cancelDirective}
-                          </button>
-                        )}
+                      </div>
+                    </div>
+
+                    <div style={{ display: 'flex', gap: '8px', marginTop: '5px', justifyContent: 'flex-end' }}>
+                      {b.status === 'Pending' && (
                         <button
-                          onClick={() => deleteBooking(b.id)}
-                          className="btn-noir btn-noir-muted"
-                          style={{ padding: '4px 10px', fontSize: '0.7rem' }}
+                          onClick={() => updateBooking(b.id, { status: 'Confirmed' })}
+                          className="btn-noir btn-noir-gold"
+                          style={{ padding: '6px 12px', fontSize: '0.7rem', width: 'auto' }}
                         >
-                          {currentT.deleteDirective}
+                          {currentT.confirmDirective}
                         </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            )}
+                      )}
+                      {b.status !== 'Cancelled' && (
+                        <button
+                          onClick={() => cancelBooking(b.id)}
+                          className="btn-noir btn-noir-muted"
+                          style={{ padding: '6px 12px', fontSize: '0.7rem', border: '1px solid rgba(153, 0, 0, 0.4)', color: 'var(--crimson)', width: 'auto' }}
+                        >
+                          {currentT.cancelDirective}
+                        </button>
+                      )}
+                      <button
+                        onClick={() => deleteBooking(b.id)}
+                        className="btn-noir btn-noir-muted"
+                        style={{ padding: '6px 12px', fontSize: '0.7rem', width: 'auto' }}
+                      >
+                        {currentT.deleteDirective}
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
           </div>
         </div>
-
       </div>
-    </div>
   );
 };
