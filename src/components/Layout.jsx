@@ -12,7 +12,7 @@ export const Layout = ({ children }) => {
 
   const t = {
     en: {
-      brand: 'Amman Mafia',
+      brand: 'Mafia Jo',
       slogan: 'Nights',
       navHome: 'Dossier',
       navServices: 'Operations',
@@ -20,11 +20,11 @@ export const Layout = ({ children }) => {
       navAdmin: 'Syndicate HQ',
       langLabel: 'العربية',
       footerQuote: '"Four of these people are citizens. Three of them are mafia. Two of them are lying. One is dead. Who do you trust?"',
-      footerDev: 'Amman Mafia Nights © 2026. All rights reserved to the Family.',
+      footerDev: 'Mafia Jo Nights © 2026. All rights reserved to the Family.',
       adminButton: 'HQ Panel'
     },
     ar: {
-      brand: 'مافيا عمان',
+      brand: 'مافيا جو',
       slogan: 'ليالي',
       navHome: 'الملف الرئيسي',
       navServices: 'العمليات',
@@ -32,7 +32,7 @@ export const Layout = ({ children }) => {
       navAdmin: 'مقر العائلة',
       langLabel: 'English',
       footerQuote: '"أربعة من هؤلاء مواطنون. ثلاثة منهم مافيا. اثنان منهم يكذبان. وواحد ميت. بمن تثق؟"',
-      footerDev: 'ليالي مافيا عمان © 2026. جميع الحقوق محفوظة للعائلة.',
+      footerDev: 'ليالي مافيا جو © 2026. جميع الحقوق محفوظة للعائلة.',
       adminButton: 'لوحة التحكم'
     }
   };
@@ -76,8 +76,8 @@ export const Layout = ({ children }) => {
             style={{ display: 'flex', alignItems: 'center', gap: '12px', cursor: 'pointer' }}
           >
             <img 
-              src="/logo.png" 
-              alt="Amman Mafia Logo" 
+              src="/logo2.png" 
+              alt="Mafia Jo Logo" 
               style={{ width: '48px', height: '48px', objectFit: 'contain', border: '1px solid var(--border-gold)', borderRadius: '50%' }} 
             />
             <div>
@@ -178,8 +178,8 @@ export const Layout = ({ children }) => {
         <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', textAlign: 'center' }}>
           
           <img 
-            src="/logo.png" 
-            alt="Amman Mafia Seal" 
+            src="/logo2.png" 
+            alt="Mafia Jo Seal" 
             style={{ width: '64px', height: '64px', opacity: 0.7 }}
           />
 

@@ -40,7 +40,7 @@ export const Home = () => {
       joinBtn: 'Join the Family',
       exploreBtn: 'Explore Operations',
       introTitle: 'Welcome to the Underworld',
-      introDesc1: 'Step back in time to the golden age of Prohibition. Behind closed doors, under a single brass spotlight, a game of life, death, and deception is played. Amman Mafia Nights organizes premium, fully immersive social deduction events where alliances are forged and broken in seconds.',
+      introDesc1: 'Step back in time to the golden age of Prohibition. Behind closed doors, under a single brass spotlight, a game of life, death, and deception is played. Mafia Jo Nights organizes premium, fully immersive social deduction events where alliances are forged and broken in seconds.',
       introDesc2: 'Whether you are a seasoned Don or a civilian looking to survive, our events are professionally moderated, feature vintage card deck tokens, themed drinks, and the absolute peak of strategic tension.',
       upcomingTitle: 'Syndicate Meetings',
       upcomingSubtitle: 'Scheduled game nights. Choose a time slot to secure your seat.',
@@ -57,7 +57,7 @@ export const Home = () => {
       joinBtn: 'انضم إلى العائلة',
       exploreBtn: 'استكشف عملياتنا',
       introTitle: 'مرحباً بك في عالم العصابات',
-      introDesc1: 'خطوة إلى الوراء بالزمن لعصر الحظر الذهبي. خلف الأبواب المغلقة وتحت تسليط ضوء خافت، تُلعب لعبة حياة وموت وخداع. تنظم ليالي مافيا عمان فعاليات حماسية غامرة بالكامل تعتمد على الاستنتاج الاجتماعي والتحالفات التي تُبنى وتنهار في ثوانٍ.',
+      introDesc1: 'خطوة إلى الوراء بالزمن لعصر الحظر الذهبي. خلف الأبواب المغلقة وتحت تسليط ضوء خافت، تُلعب لعبة حياة وموت وخداع. تنظم ليالي مافيا جو فعاليات حماسية غامرة بالكامل تعتمد على الاستنتاج الاجتماعي والتحالفات التي تُبنى وتنهار في ثوانٍ.',
       introDesc2: 'سواء كنت عرّاباً متمرساً أو مواطناً بسيطاً يحاول النجاة، فإن جولاتنا تُدار باحترافية تامة، وتتميز بأوراق لعب كلاسيكية فاخرة، وأجواء غامضة تلائم قمة التوتر الاستراتيجي.',
       upcomingTitle: 'اجتماعات العائلة القادمة',
       upcomingSubtitle: 'مواعيد اللعب المتاحة. اختر فترتك لتأمين مقعدك.',
@@ -156,10 +156,10 @@ export const Home = () => {
               marginBottom: '15px',
               animation: 'gold-flicker 4s infinite'
             }}>
-              ليالي مافيا عمان
+              ليالي مافيا جو
             </span>
             <h1 className="hero-title">
-              Amman Mafia <br />
+              Mafia Jo <br />
               <span className="crimson-accent">Nights</span>
             </h1>
             
@@ -205,8 +205,8 @@ export const Home = () => {
               pointerEvents: 'none'
             }}></div>
             <img 
-              src="/logo.png" 
-              alt="Amman Mafia Shield Logo" 
+              src="/logo2.png" 
+              alt="Mafia Jo Shield Logo" 
               className="hero-logo-img"
               onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.08) rotate(1deg)'}
               onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1.03) rotate(0deg)'}

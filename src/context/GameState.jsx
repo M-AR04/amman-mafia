@@ -74,7 +74,7 @@ export const GameStateProvider = ({ children }) => {
   }, []);
 
   const [announcement, setAnnouncement] = useState(() => {
-    return localStorage.getItem('am_announcement') || '🎭 Welcome to the Amman Mafia Syndicate. Secure your seat at the round table for the ultimate strategic battle! 🎭';
+    return localStorage.getItem('am_announcement') || '🎭 Welcome to the Mafia Jo Syndicate. Secure your seat at the round table for the ultimate strategic battle! 🎭';
   });
 
   const [maintenanceMode, setMaintenanceMode] = useState(() => {
