@@ -68,7 +68,7 @@ export const Layout = ({ children }) => {
         zIndex: 500,
         padding: '12px 0'
       }}>
-        <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div className="container header-container">
           
           {/* Logo / Brand */}
           <div 
@@ -194,7 +194,7 @@ export const Layout = ({ children }) => {
             {currentT.footerQuote}
           </p>
 
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', borderTop: '1px solid #1c1a1e', paddingTop: '15px', marginTop: '10px' }}>
+          <div className="footer-sub" style={{ borderTop: '1px solid #1c1a1e', paddingTop: '15px', marginTop: '10px' }}>
             <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
               {currentT.footerDev}
             </span>

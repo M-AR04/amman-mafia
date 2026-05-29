@@ -44,6 +44,23 @@ export const AdminDashboard = () => {
   const [directName, setDirectName] = useState('');
   const [directPhone, setDirectPhone] = useState('');
 
+  const [tableSize, setTableSize] = useState(340);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 380) {
+        setTableSize(240);
+      } else if (window.innerWidth < 500) {
+        setTableSize(280);
+      } else {
+        setTableSize(340);
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const slots = getTimeSlots();
 
   useEffect(() => {
@@ -395,7 +412,7 @@ export const AdminDashboard = () => {
               </div>
 
               {selectedSlot ? (
-                <div className="poker-table-wrapper" style={{ width: '340px', height: '340px' }}>
+                <div className="poker-table-wrapper" style={{ width: `${tableSize}px`, height: `${tableSize}px` }}>
                   <div className="poker-table-felt" style={{ border: '8px solid #16120e' }}>
                     <div className="table-center-text">
                       <span className="title" style={{ fontSize: '0.8rem' }}>{currentT.tableFeltText}</span>
@@ -410,7 +427,7 @@ export const AdminDashboard = () => {
                     const assignment = seatAssignments[seatNum];
 
                     const angle = (i * 2 * Math.PI) / maxSeats - Math.PI / 2;
-                    const radius = 125; 
+                    const radius = tableSize * 0.36; 
                     const x = Math.cos(angle) * radius;
                     const y = Math.sin(angle) * radius;
 

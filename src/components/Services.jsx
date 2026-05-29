@@ -154,12 +154,8 @@ export const Services = () => {
           return (
             <div 
               key={service.id} 
-              className="card-noir card-tilt-hover gold-shine-border"
+              className="card-noir card-tilt-hover gold-shine-border services-grid"
               style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-                gap: '40px',
-                alignItems: 'center',
                 borderLeft: service.primary ? '4px solid var(--primary-gold)' : '1px solid var(--border-gold)'
               }}
             >

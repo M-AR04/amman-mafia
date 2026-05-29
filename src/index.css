@@ -53,34 +53,28 @@ body {
 }
 
 /* Masterclass Animations */
-
-/* Ambient fog drifting */
 @keyframes smoke-drift {
   0% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 0.12; }
   50% { transform: translate(4%, -3%) scale(1.08) rotate(2deg); opacity: 0.22; }
   100% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 0.12; }
 }
 
-/* Breathing spot light */
 @keyframes pulse-spotlight {
   0%, 100% { opacity: 0.25; transform: translate(-50%, -50%) scale(1); }
   50% { opacity: 0.4; transform: translate(-50%, -46%) scale(1.1); }
 }
 
-/* 3D Ticket drawer slide */
 @keyframes ticket-slide-in {
   0% { transform: translateY(120px) rotateX(35deg) scale(0.9); opacity: 0; }
   60% { transform: translateY(-10px) rotateX(-5deg) scale(1.02); opacity: 0.9; }
   100% { transform: translateY(0) rotateX(0deg) scale(1); opacity: 1; }
 }
 
-/* Mechanical typewriter blinking caret */
 @keyframes caret-blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
 }
 
-/* Heavy Blood Seal stamping slam */
 @keyframes blood-stamp {
   0% { transform: scale(3.5) rotate(-35deg); opacity: 0; filter: blur(4px); }
   45% { transform: scale(0.9) rotate(8deg); opacity: 0.9; filter: none; }
@@ -88,14 +82,12 @@ body {
   100% { transform: scale(1) rotate(-5deg); opacity: 1; }
 }
 
-/* Heavy screen shake triggered on blood stamp landing */
 @keyframes screen-shake {
   0%, 100% { transform: translate(0, 0); }
   10%, 30%, 50%, 70%, 90% { transform: translate(-3px, 2px); }
   20%, 40%, 60%, 80% { transform: translate(3px, -2px); }
 }
 
-/* Radial Seat Spiral Entrance */
 @keyframes scale-in-radial {
   0% { 
     transform: translate(0px, 0px) scale(0) rotate(-180deg); 
@@ -107,30 +99,25 @@ body {
   }
 }
 
-/* Cascading layout blocks fade-in */
 @keyframes cascade-fade {
   0% { transform: translateY(20px); opacity: 0; }
   100% { transform: translateY(0); opacity: 1; }
 }
 
-/* Pulsing blood red glow for hot seats/announcements */
 @keyframes crimson-pulse {
   0%, 100% { box-shadow: 0 0 10px rgba(153, 0, 0, 0.2); border-color: var(--border-red); }
   50% { box-shadow: 0 0 25px rgba(153, 0, 0, 0.5); border-color: var(--crimson); }
 }
 
-/* Gold shimmer shine swipe */
 @keyframes gold-shine-sweep {
   0% { left: -150%; }
   100% { left: 150%; }
 }
 
-/* Floating fedora silhouette */
 @keyframes fedora-float {
   0%, 100% { transform: translateY(0) rotate(0deg); }
   50% { transform: translateY(-8px) rotate(2deg); }
 }
-
 
 /* Layout & Atmospheric Classes */
 .noir-fog {
@@ -172,13 +159,20 @@ body {
   animation: pulse-spotlight 14s infinite ease-in-out;
 }
 
-/* Container & Cascades */
+/* Container & Mobile overrides */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
   position: relative;
   z-index: 10;
+  transition: var(--transition-smooth);
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 0 16px;
+  }
 }
 
 .arabic-font {
@@ -220,10 +214,12 @@ body {
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s, box-shadow 0.5s;
 }
 
-.card-tilt-hover:hover {
-  transform: perspective(1000px) rotateX(4deg) rotateY(-3deg) translateY(-8px);
-  border-color: var(--primary-gold);
-  box-shadow: 0 20px 40px rgba(197, 160, 89, 0.12);
+@media (min-width: 769px) {
+  .card-tilt-hover:hover {
+    transform: perspective(1000px) rotateX(4deg) rotateY(-3deg) translateY(-8px);
+    border-color: var(--primary-gold);
+    box-shadow: 0 20px 40px rgba(197, 160, 89, 0.12);
+  }
 }
 
 /* Glowing shimmer edge */
@@ -266,6 +262,15 @@ body {
   overflow: hidden;
 }
 
+@media (max-width: 480px) {
+  .btn-noir {
+    padding: 12px 24px;
+    font-size: 0.75rem;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 .btn-noir-gold {
   background: linear-gradient(135deg, #1f1a14 0%, #0d0c0a 100%);
   border: 1px solid var(--primary-gold);
@@ -306,7 +311,7 @@ body {
   transform: translateY(-2px);
 }
 
-/* Card Styling */
+/* Card Styling & Mobile Optimization */
 .card-noir {
   background-color: var(--bg-card);
   border: 1px solid var(--border-gold);
@@ -314,6 +319,13 @@ body {
   padding: 36px;
   position: relative;
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.85);
+  transition: var(--transition-smooth);
+}
+
+@media (max-width: 600px) {
+  .card-noir {
+    padding: 20px 16px;
+  }
 }
 
 .card-dossier {
@@ -325,8 +337,14 @@ body {
   transition: var(--transition-smooth);
 }
 
+@media (max-width: 600px) {
+  .card-dossier {
+    padding: 20px 16px;
+  }
+}
+
 .card-dossier:hover {
-  transform: translateX(language === 'ar' ? -6px : 6px);
+  transform: translateX(6px);
   border-left-color: var(--crimson);
   box-shadow: 0 10px 25px rgba(0,0,0,0.6);
 }
@@ -370,7 +388,7 @@ body {
   box-shadow: 0 0 15px rgba(197, 160, 89, 0.2);
 }
 
-/* Visual Seat Picker Map */
+/* Visual Seat Picker Map & Felt Sizing */
 .seat-map-container {
   display: flex;
   flex-direction: column;
@@ -378,6 +396,14 @@ body {
   justify-content: center;
   padding: 40px 0;
   position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+@media (max-width: 600px) {
+  .seat-map-container {
+    padding: 20px 0;
+  }
 }
 
 .poker-table-wrapper {
@@ -389,12 +415,21 @@ body {
   align-items: center;
   justify-content: center;
   margin-bottom: 30px;
+  transition: var(--transition-smooth);
 }
 
 @media (max-width: 500px) {
   .poker-table-wrapper {
-    width: 320px;
-    height: 320px;
+    width: 290px;
+    height: 290px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 380px) {
+  .poker-table-wrapper {
+    width: 260px;
+    height: 260px;
   }
 }
 
@@ -412,6 +447,12 @@ body {
   z-index: 5;
   position: relative;
   transition: var(--transition-smooth);
+}
+
+@media (max-width: 500px) {
+  .poker-table-felt {
+    border-width: 8px;
+  }
 }
 
 .poker-table-felt::before {
@@ -449,6 +490,12 @@ body {
   text-shadow: 0 2px 4px #000;
 }
 
+@media (max-width: 500px) {
+  .table-center-text .title {
+    font-size: 0.75rem;
+  }
+}
+
 .radial-seat {
   position: absolute;
   width: 44px;
@@ -470,9 +517,9 @@ body {
 
 @media (max-width: 500px) {
   .radial-seat {
-    width: 36px;
-    height: 36px;
-    font-size: 0.75rem;
+    width: 34px;
+    height: 34px;
+    font-size: 0.7rem;
   }
 }
 
@@ -554,11 +601,12 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 40px;
+  padding: 40px 20px;
 }
 
 .maintenance-logo {
   width: 220px;
+  max-width: 60%;
   margin-bottom: 30px;
   animation: pulse-spotlight 6s infinite alternate ease-in-out;
 }
@@ -583,6 +631,13 @@ body {
   animation: ticket-slide-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+@media (max-width: 600px) {
+  .syndicate-ticket {
+    padding: 20px 16px;
+    margin: 15px auto;
+  }
+}
+
 .syndicate-ticket::after {
   content: '';
   position: absolute;
@@ -594,6 +649,12 @@ body {
   margin: 8px;
   pointer-events: none;
   border-radius: 4px;
+}
+
+@media (max-width: 600px) {
+  .syndicate-ticket::after {
+    margin: 4px;
+  }
 }
 
 .blood-seal {
@@ -620,6 +681,16 @@ body {
   /* Slam animation timed to match shake */
   animation: blood-stamp 0.65s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
   animation-delay: 0.5s;
+}
+
+@media (max-width: 600px) {
+  .blood-seal {
+    width: 80px;
+    height: 80px;
+    right: 15px;
+    bottom: 15px;
+    font-size: 0.6rem;
+  }
 }
 
 .blood-seal-text {
@@ -664,4 +735,85 @@ input:checked + .switch-slider {
 input:checked + .switch-slider::before {
   transform: translateX(24px);
   background-color: var(--primary-gold);
+}
+
+
+/* RESPONSIVE LAYOUT CLASSES */
+
+/* Header / Navigation responsiveness */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+@media (max-width: 600px) {
+  .header-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+}
+
+/* Footer sub-bar layout responsiveness */
+.footer-sub {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .footer-sub {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+}
+
+/* Home Page grids responsiveness */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 30px;
+  }
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .intro-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+/* Services grid responsiveness */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 40px;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
 }

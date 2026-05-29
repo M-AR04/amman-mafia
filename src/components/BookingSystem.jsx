@@ -19,6 +19,23 @@ export const BookingSystem = () => {
   const [bookingConfirmed, setBookingConfirmed] = useState(false);
   const [lastBooking, setLastBooking] = useState(null);
 
+  const [tableSize, setTableSize] = useState(440);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 380) {
+        setTableSize(260);
+      } else if (window.innerWidth < 500) {
+        setTableSize(290);
+      } else {
+        setTableSize(440);
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const slots = getTimeSlots();
 
   // Reset selected slot if it's not valid for the generated slots
@@ -423,7 +440,7 @@ export const BookingSystem = () => {
 
                     // Math for circular alignment
                     const angle = (i * 2 * Math.PI) / maxSeats - Math.PI / 2;
-                    const radius = window.innerWidth < 500 ? 120 : 165; 
+                    const radius = tableSize * 0.375; 
                     const x = Math.cos(angle) * radius;
                     const y = Math.sin(angle) * radius;
 

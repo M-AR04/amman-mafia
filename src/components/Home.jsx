@@ -143,7 +143,7 @@ export const Home = () => {
         borderBottom: '1px solid var(--border-gold)',
         padding: '60px 0'
       }}>
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '40px', alignItems: 'center' }}>
+        <div className="container hero-grid">
           
           {/* Hero Left Content */}
           <div style={{ textAlign: language === 'ar' ? 'right' : 'left' }}>
@@ -232,7 +232,7 @@ export const Home = () => {
 
       {/* 2. INTRODUCTION */}
       <section style={{ padding: '80px 0', borderBottom: '1px solid #141316', backgroundColor: '#070709' }}>
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: '0.9fr 1.1fr', gap: '60px', alignItems: 'center' }}>
+        <div className="container intro-grid">
           
           {/* Intro Image Graphic */}
           <div style={{ position: 'relative', height: '350px', border: '1px solid var(--border-gold)', borderRadius: '6px', overflow: 'hidden' }}>
