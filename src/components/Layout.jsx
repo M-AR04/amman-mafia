@@ -12,7 +12,7 @@ export const Layout = ({ children }) => {
 
   const t = {
     en: {
-      brand: 'Mafia Jo',
+      brand: 'Mafia Club',
       slogan: 'Nights',
       navHome: 'Dossier',
       navServices: 'Operations',
@@ -20,11 +20,11 @@ export const Layout = ({ children }) => {
       navAdmin: 'Syndicate HQ',
       langLabel: 'العربية',
       footerQuote: '"Four of these people are citizens. Three of them are mafia. Two of them are lying. One is dead. Who do you trust?"',
-      footerDev: 'Mafia Jo Nights © 2026. All rights reserved to the Family.',
+      footerDev: 'Mafia Club Nights © 2026. All rights reserved to the Family.',
       adminButton: 'HQ Panel'
     },
     ar: {
-      brand: 'مافيا جو',
+      brand: 'نادي المافيا',
       slogan: 'ليالي',
       navHome: 'الملف الرئيسي',
       navServices: 'العمليات',
@@ -32,7 +32,7 @@ export const Layout = ({ children }) => {
       navAdmin: 'مقر العائلة',
       langLabel: 'English',
       footerQuote: '"أربعة من هؤلاء مواطنون. ثلاثة منهم مافيا. اثنان منهم يكذبان. وواحد ميت. بمن تثق؟"',
-      footerDev: 'ليالي مافيا جو © 2026. جميع الحقوق محفوظة للعائلة.',
+      footerDev: 'ليالي نادي المافيا © 2026. جميع الحقوق محفوظة للعائلة.',
       adminButton: 'لوحة التحكم'
     }
   };
@@ -76,8 +76,8 @@ export const Layout = ({ children }) => {
             style={{ display: 'flex', alignItems: 'center', gap: '12px', cursor: 'pointer' }}
           >
             <img 
-              src="/logo2.png" 
-              alt="Mafia Jo Logo" 
+              src="/logo3.png" 
+              alt="Mafia Club Logo" 
               style={{ width: '48px', height: '48px', objectFit: 'contain', border: '1px solid var(--border-gold)', borderRadius: '50%' }} 
             />
             <div>
@@ -178,8 +178,8 @@ export const Layout = ({ children }) => {
         <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', textAlign: 'center' }}>
           
           <img 
-            src="/logo2.png" 
-            alt="Mafia Jo Seal" 
+            src="/logo3.png" 
+            alt="Mafia Club Seal" 
             style={{ width: '64px', height: '64px', opacity: 0.7 }}
           />
 

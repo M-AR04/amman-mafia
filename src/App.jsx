@@ -23,7 +23,7 @@ function MainApp() {
         <div className="gold-spotlight"></div>
         
         <div style={{ position: 'relative', zIndex: 10 }}>
-          <img src="/logo2.png" alt="Mafia Jo Seal" className="maintenance-logo" />
+          <img src="/logo3.png" alt="Mafia Club Seal" className="maintenance-logo" />
           <h1 className="title-vintage crimson-accent" style={{ fontSize: '2.5rem', marginBottom: '20px', letterSpacing: '0.1em' }}>
             {language === 'en' ? 'Syndicate HQ Closed' : 'مقر العائلة مغلق مؤقتاً'}
           </h1>

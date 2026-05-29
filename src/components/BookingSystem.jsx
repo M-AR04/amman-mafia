@@ -152,7 +152,7 @@ export const BookingSystem = () => {
       seatMapTitle: 'Interactive Round Table',
       seatMapDesc: 'Select unoccupied seats (golden). Confirmed syndicate members are greyed out.',
       capacityRemaining: 'spots remaining in this meeting',
-      tableCenterText: 'MAFIA JO',
+      tableCenterText: 'MAFIA CLUB',
       tableCenterSub: 'ROUND TABLE',
       bookingFormTitle: 'Oath of the Family',
       bookingFormDesc: 'Enter your credentials to lock your booking. Admin will review and confirm.',
@@ -180,7 +180,7 @@ export const BookingSystem = () => {
       seatMapTitle: 'طاولة اللعب المستديرة التفاعلية',
       seatMapDesc: 'اختر مقعدك الشاغر (ذهبي). الأعضاء المؤكدون يظهرون باللون الداكن مع الحروف الأولى لأسمائهم.',
       capacityRemaining: 'مقاعد متبقية في هذا الاجتماع',
-      tableCenterText: 'مافيا جو',
+      tableCenterText: 'نادي المافيا',
       tableCenterSub: 'الطاولة المستديرة',
       bookingFormTitle: 'ميثاق شرف العائلة',
       bookingFormDesc: 'أدخل بياناتك لقفل حجزك. ستقوم لوحة الإدارة بمراجعة الحجز وتأكيده.',
@@ -231,10 +231,10 @@ export const BookingSystem = () => {
 
           <div style={{ borderBottom: '1px solid var(--border-gold)', paddingBottom: '15px', marginBottom: '20px' }}>
             <span className="gold-accent" style={{ fontFamily: 'var(--font-title)', fontSize: '0.75rem', letterSpacing: '0.2em' }}>
-              MAFIA JO SYNDICATE
+              MAFIA CLUB SYNDICATE
             </span>
             <h2 className="title-vintage" style={{ fontSize: '1.5rem', marginTop: '5px' }}>
-              ليالي مافيا جو
+              ليالي نادي المافيا
             </h2>
           </div>
 
@@ -436,7 +436,7 @@ export const BookingSystem = () => {
                   
                   {/* Table Felt (Center) */}
                   <div className="poker-table-felt">
-                    <img src="/logo2.png" alt="Syndicate Logo" className="poker-table-logo" />
+                    <img src="/logo3.png" alt="Syndicate Logo" className="poker-table-logo" />
                     <div className="table-center-text">
                       <span className="title">{currentT.tableCenterText}</span>
                       <span className="subtitle" style={{ display: 'block', fontSize: '0.6rem', letterSpacing: '0.1em', color: 'var(--text-muted)', marginTop: '2px' }}>
